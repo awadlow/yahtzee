@@ -3,8 +3,14 @@ package yahtzee;
 public class CheckIn {
 	
 	public static void main(String args[]){
+		String user = null;
 		
-		System.out.println("Austin checking in");
+		user = "Austin";
+		System.out.println(user + " checking in");
+		
+		user = "Casey";
+		System.out.println(user + " checking in");
+
 	}
 
 }
