@@ -10,7 +10,9 @@ public class CheckIn {
 		
 		user = "Casey";
 		System.out.println(user + " checking in");
-
+		
+		user = "Emanuel";
+		System.out.println(user + " checking in");
 	}
 
 }
