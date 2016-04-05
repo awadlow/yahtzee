@@ -1,3 +1,7 @@
+/**
+ * @author AustinWadlow
+ */
+
 package yahtzee;
 
 public class Dice {
@@ -10,6 +14,10 @@ public class Dice {
 		value = (int)(Math.random()*6) + 1;	
 		System.out.println(value);
 		return value;
+	}
+	
+	public int getValue(){
+		return this.value;
 	}
 	
 	public void setHold(boolean hold){
