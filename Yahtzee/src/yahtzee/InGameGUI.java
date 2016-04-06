@@ -1,7 +1,10 @@
 package yahtzee;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -31,12 +34,41 @@ public class InGameGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public InGameGUI() {
+		setResizable(false);
+		setBounds(new Rectangle(0, 23, 675, 480));
+		setPreferredSize(new Dimension(675, 480));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 200, 675, 480);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new CardLayout(0, 0));
+		
+		PlayPanel play = new PlayPanel();
+		
+		contentPane.add(play, "PlayYahtzee");
+		
+		// sets starting layout 
+		CardLayout cl = (CardLayout)(contentPane.getLayout());
+		cl.show(contentPane, "PlayYahtzee");
+		
 	}
+	
+	public void exitProgram() // terminates program
+	{
+		System.exit(0);
+	}
+	
+	public void changeCards(String nextJFrame){ // will 
+
+		if (nextJFrame == "PlayYahtzee")
+		{
+			CardLayout cl = (CardLayout)(contentPane.getLayout());
+			cl.show(contentPane, "PlayYahtzee");
+		}
+		
+	}
+
 
 }
