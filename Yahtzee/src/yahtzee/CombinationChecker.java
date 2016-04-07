@@ -18,6 +18,7 @@ package yahtzee;
 	   }
 
 	   //Checks full house, three of a kind, four of a kind, yahtzee and returns score
+	   //Type 1 = three of a kind, 2 = four of a kind, 3 = full house, 4 = yahtzee
 	   public int checkOfaKind(int[] diceValues, int type){
 
 		   int[] numOfValues = new int[6];
