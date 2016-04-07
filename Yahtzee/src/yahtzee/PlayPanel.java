@@ -53,7 +53,7 @@ public class PlayPanel extends JPanel {
 		add(lblYahtzee, gbc_lblYahtzee);
 		
 		
-		JLabel lblDieRollOne = new JLabel("1");
+		JLabel lblDieRollOne = new JLabel("");
 		GridBagConstraints gbc_lblDieRollOne = new GridBagConstraints();
 		gbc_lblDieRollOne.gridwidth = 2;
 		gbc_lblDieRollOne.gridheight = 2;
@@ -62,7 +62,7 @@ public class PlayPanel extends JPanel {
 		gbc_lblDieRollOne.gridy = 3;
 		add(lblDieRollOne, gbc_lblDieRollOne);
 		
-		JLabel lblDieRollTwo = new JLabel("2");
+		JLabel lblDieRollTwo = new JLabel("");
 		GridBagConstraints gbc_lblDieRollTwo = new GridBagConstraints();
 		gbc_lblDieRollTwo.gridwidth = 2;
 		gbc_lblDieRollTwo.gridheight = 2;
@@ -71,7 +71,7 @@ public class PlayPanel extends JPanel {
 		gbc_lblDieRollTwo.gridy = 3;
 		add(lblDieRollTwo, gbc_lblDieRollTwo);
 		
-		JLabel lblDieRollThree = new JLabel("3");
+		JLabel lblDieRollThree = new JLabel("");
 		GridBagConstraints gbc_lblDieRollThree = new GridBagConstraints();
 		gbc_lblDieRollThree.gridwidth = 2;
 		gbc_lblDieRollThree.gridheight = 2;
@@ -80,7 +80,7 @@ public class PlayPanel extends JPanel {
 		gbc_lblDieRollThree.gridy = 3;
 		add(lblDieRollThree, gbc_lblDieRollThree);
 		
-		JLabel lblDieRollFour = new JLabel("4");
+		JLabel lblDieRollFour = new JLabel("");
 		GridBagConstraints gbc_lblDieRollFour = new GridBagConstraints();
 		gbc_lblDieRollFour.gridwidth = 2;
 		gbc_lblDieRollFour.gridheight = 2;
@@ -89,7 +89,7 @@ public class PlayPanel extends JPanel {
 		gbc_lblDieRollFour.gridy = 3;
 		add(lblDieRollFour, gbc_lblDieRollFour);
 		
-		JLabel lblDieRollFive = new JLabel("5");
+		JLabel lblDieRollFive = new JLabel("");
 		GridBagConstraints gbc_lblDieRollFive = new GridBagConstraints();
 		gbc_lblDieRollFive.gridwidth = 2;
 		gbc_lblDieRollFive.gridheight = 2;
