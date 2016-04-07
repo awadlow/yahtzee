@@ -1,3 +1,7 @@
+/**
+ * @author CaseyO'Kelly
+ */
+
 package yahtzee;
 
 import java.awt.BorderLayout;
