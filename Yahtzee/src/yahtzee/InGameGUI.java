@@ -38,7 +38,7 @@ public class InGameGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public InGameGUI() {
-		setResizable(false);
+		setResizable(true);
 		setBounds(new Rectangle(0, 23, 675, 480));
 		setPreferredSize(new Dimension(675, 480));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
