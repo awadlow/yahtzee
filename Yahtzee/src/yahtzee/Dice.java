@@ -10,9 +10,10 @@ public class Dice {
 	private boolean hold = false;
 	
 	public int roll(){
-		
-		value = (int)(Math.random()*6) + 1;	
-		System.out.println(value);
+		if(hold == false)
+		{
+			value = (int)(Math.random()*6) + 1;
+		}
 		return value;
 	}
 	
