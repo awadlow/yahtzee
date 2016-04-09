@@ -45,19 +45,31 @@ public class TestDrive {
 //		System.out.println("Ones: " + one + " Twos: " + two + " Threes: " + 
 //				three + " Fours: " + four + " Fives: " + five + " Sixes: " + six + " Errors: " + error);
 		
-		CombinationChecker check = CombinationChecker.getInstance();
+		//CombinationChecker check = CombinationChecker.getInstance();
 		Dice[] dice = new Dice[5];
 		int[] diceValues = new int[5];
+		boolean[] alreadyUsed = new boolean[13];
 		
 		for(int i = 0; i < 5; i++)
 		{
 			dice[i] = new Dice();
 			dice[i].roll();
-			System.out.println(dice[i].getValue());
+			//System.out.println(dice[i].getValue());
 			diceValues[i] = dice[i].getValue();
+			//System.out.println(diceValues[i]);
+			alreadyUsed[i] = false;
 		}
 		
-		System.out.println(check.checkStraight(diceValues, 2));
+		Scorecard scorecard = new Scorecard();
+		
+		PlayerStrategy strategy = new RandomStrategy();
+		
+	
+		for(int cnt = 0; cnt < 13; cnt ++)
+			scorecard = strategy.operation(dice, scorecard);
+		//System.out.println(check.checkStraight(diceValues, 2));
 	}
-
+	
+	
+	
 }

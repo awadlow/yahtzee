@@ -141,10 +141,20 @@ package yahtzee;
 				   return 40;
 		   
 		   return 0;
-				  
+				     
+	   }
+	   
+   public int getChance(int[] diceValues){
+		   
+		   int sum = 0;
+		   
+		   for(int cnt = 0; cnt < 5; cnt ++)
+		   {
 			   
+			   sum += diceValues[cnt]; 
+		   }
 		   
-		   
+		   return sum;
 	   }
 	   
 	}
