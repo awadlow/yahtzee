@@ -101,8 +101,8 @@ package yahtzee;
 		   
 	   }
 	   
-	   //Checks small and large straight and returns score
-	   public int checkStraight(int[] diceValues, int type){
+	  //Checks small and large straight and returns score
+	  public int checkStraight(int[] diceValues, int type){
 		   
 		   int[] numOfValues = new int[6];
 		   int sum = 0;
@@ -144,7 +144,8 @@ package yahtzee;
 				     
 	   }
 	   
-   public int getChance(int[] diceValues){
+	  //Returns the value if chance is taken
+	  public int getChance(int[] diceValues){
 		   
 		   int sum = 0;
 		   

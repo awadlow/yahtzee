@@ -66,7 +66,9 @@ public class TestDrive {
 		
 	
 		for(int cnt = 0; cnt < 13; cnt ++)
-			scorecard = strategy.operation(dice, scorecard);
+			strategy.operation(dice, scorecard);
+		
+		System.out.println("Total score: " +scorecard.getTotalScore());
 		//System.out.println(check.checkStraight(diceValues, 2));
 	}
 	

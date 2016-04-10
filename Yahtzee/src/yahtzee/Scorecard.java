@@ -48,4 +48,14 @@ public class Scorecard {
 			return false;
 	}
 	
+	public int getTotalScore(){
+		
+		int totalScore = 0;
+		for(int cnt = 0; cnt < scores.length; cnt++)
+		{
+			totalScore += scores[cnt];
+		}
+		return totalScore;
+	}
+	
 }
