@@ -1,3 +1,6 @@
+/**
+ * @author AustinWadlow
+ */
 package yahtzee;
 
 public class Scorecard {
