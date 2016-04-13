@@ -14,7 +14,7 @@ public class OfAKinderStrategy implements PlayerStrategy{
 		int[] diceValues = new int[dice.length];
 		int[] numOfValues = new int[dice.length + 1];
 		
-		for(int turn = 1; turn <= 3; turn++){
+		for(int turn = 1; turn < 3; turn++){
 						
 			for(int cnt = 0; cnt < dice.length; cnt ++){
 				diceValues[cnt] = dice[cnt].getValue();
@@ -32,43 +32,47 @@ public class OfAKinderStrategy implements PlayerStrategy{
 				   else if(diceValues[cnt] == 6)
 					   numOfValues[5]++;
 			}
-				
+			for(int inc = 0; inc < dice.length; inc++){
 				if(numOfValues[0] >= 2)
-					  for(int inc = 0; inc < dice.length; inc++)
-						  if(dice[inc].getValue() == 1){
+					if(dice[inc].getValue() == 1){
 							  dice[inc].setHold(true);
 						  }
-				   else if(numOfValues[1] >= 2)
-					   if(dice[inc].getValue() == 2){
-							  dice[inc].setHold(true);
-						  }
-					   
-				   else if(numOfValues[2] >= 2)
-					   if(dice[inc].getValue() == 3){
+				if(numOfValues[1] >= 2)
+					if(dice[inc].getValue() == 2){
 							  dice[inc].setHold(true);
 						  }
 					   
-				   else if(numOfValues[3] >= 2)
-					   if(dice[inc].getValue() == 4){
+				if(numOfValues[2] >= 2)
+					if(dice[inc].getValue() == 3){
 							  dice[inc].setHold(true);
 						  }
 					   
-				   else if(numOfValues[4] >= 2)
-					   if(dice[inc].getValue() == 5){
+				if(numOfValues[3] >= 2)
+					if(dice[inc].getValue() == 4){
 							  dice[inc].setHold(true);
 						  }
 					   
-				   else if(numOfValues[5] >= 2)
-					   if(dice[inc].getValue() == 6){
+				if(numOfValues[4] >= 2)
+					if(dice[inc].getValue() == 5){
 							  dice[inc].setHold(true);
 						  }
-					for(int counter = 0; counter < dice.length; counter ++){
-						System.out.println("End of turn" + turn);
-						System.out.println("Dice Values:" + dice[0].getValue() + " " + dice[1].getValue() + " "
-								 + dice[2].getValue() + " "  + dice[3].getValue() + " "  + dice[4].getValue() + " ");
-						System.out.println("Dice Holds:" + dice[0].getHold() + " " + dice[1].getHold() + " "
-								 + dice[2].getHold() + " "  + dice[3].getHold() + " "  + dice[4].getHold() + " ");
+					   
+				 if(numOfValues[5] >= 2)
+					 if(dice[inc].getValue() == 6){
+							  dice[inc].setHold(true);
+						  }
+					  }
+			
+			
+			System.out.println("Dice Values:" + dice[0].getValue() + " " + dice[1].getValue() + " "
+					 + dice[2].getValue() + " "  + dice[3].getValue() + " "  + dice[4].getValue() + " ");
+			System.out.println("End of turn" + turn);
+			
+			for(int counter = 0; counter < dice.length; counter ++){				
 						dice[counter].roll();
+					}
+					for(int i = 0; i <6; i++){
+						numOfValues[i] = 0;
 					}
 				
 		
@@ -77,26 +81,32 @@ public class OfAKinderStrategy implements PlayerStrategy{
 		if(scorecard.getTaken(8) == false){
 			value = check.checkOfaKind(diceValues, 3);
 			scorecardCategory = 8;
+			System.out.println("Value after 8 = " + value);
 		}
 		
 		if(scorecard.getTaken(11) == false && check.checkOfaKind(diceValues, 4) >= value){
 			value = check.checkOfaKind(diceValues, 4);
 			scorecardCategory = 11;
-		}
-		
-		if(scorecard.getTaken(7) == false && check.checkOfaKind(diceValues, 2) >= value){
-			value = check.checkOfaKind(diceValues, 2);
-			scorecardCategory = 7;
+			System.out.println("Value after 11 = " + value);
 		}
 		
 		if(scorecard.getTaken(6) == false && check.checkOfaKind(diceValues, 1) >= value){
 			value = check.checkOfaKind(diceValues, 1);
 			scorecardCategory = 6;
+			System.out.println("Value after 6 = " + value);
 		}
+		
+		if(scorecard.getTaken(7) == false && check.checkOfaKind(diceValues, 2) >= value){
+			value = check.checkOfaKind(diceValues, 2);
+			scorecardCategory = 7;
+			System.out.println("Value after 7 = " + value);
+		}
+		
 		
 		if(value == 0 && scorecard.getTaken(12) == false){
 			value = check.getChance(diceValues);
 			scorecardCategory = 12;
+			System.out.println("Value after 12 = " + value);
 		}
 		
 		System.out.println("Choosing " + scorecardCategory + " for " + value + " points.");

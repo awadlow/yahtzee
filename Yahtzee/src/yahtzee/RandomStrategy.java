@@ -11,7 +11,7 @@ public class RandomStrategy implements PlayerStrategy {
 		int value = 0;
 		int[] diceValues = new int[dice.length];
 		
-		for(int turn = 1; turn <= 3; turn ++){
+		for(int turn = 1; turn < 3; turn ++){
 			for(int i = 0; i < dice.length; i++){
 				value = (int)(Math.random()*2) + 1;
 				if(value == 1){

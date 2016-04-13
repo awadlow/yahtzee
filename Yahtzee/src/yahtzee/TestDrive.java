@@ -45,7 +45,7 @@ public class TestDrive {
 //		System.out.println("Ones: " + one + " Twos: " + two + " Threes: " + 
 //				three + " Fours: " + four + " Fives: " + five + " Sixes: " + six + " Errors: " + error);
 		
-		//CombinationChecker check = CombinationChecker.getInstance();
+		CombinationChecker check = CombinationChecker.getInstance();
 		Dice[] dice = new Dice[5];
 		int[] diceValues = new int[5];
 		boolean[] alreadyUsed = new boolean[13];
@@ -60,6 +60,7 @@ public class TestDrive {
 		Scorecard scorecard = new Scorecard();
 		
 		PlayerStrategy strategy = new OfAKinderStrategy();
+		strategy = new RandomStrategy();
 		
 	
 		for(int cnt = 0; cnt < 5; cnt ++){
@@ -67,9 +68,11 @@ public class TestDrive {
 			{
 				dice[i] = new Dice();
 				dice[i].roll();
-				System.out.println(dice[i].getHold());
-				System.out.println(dice[i].getValue());
+				//System.out.println(dice[i].getHold());
+				//System.out.println(dice[i].getValue());
+				diceValues[i] = 5;
 			}
+			diceValues[1] = 1;
 			strategy.operation(dice, scorecard);
 		}
 		System.out.println("Total score: " +scorecard.getTotalScore());
