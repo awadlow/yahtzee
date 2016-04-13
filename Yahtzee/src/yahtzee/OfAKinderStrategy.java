@@ -14,10 +14,13 @@ public class OfAKinderStrategy implements PlayerStrategy{
 		int[] diceValues = new int[dice.length];
 		int[] numOfValues = new int[dice.length + 1];
 		
-		for(int turn = 1; turn < 3; turn++){
+		for(int turn = 2; turn < 4; turn++){
 						
+			for (int counter = 0; counter < dice.length; counter ++){
+				diceValues[counter] = dice[counter].getValue();
+			}
 			for(int cnt = 0; cnt < dice.length; cnt ++){
-				diceValues[cnt] = dice[cnt].getValue();
+			
 				
 				if(diceValues[cnt] == 1)
 					   numOfValues[0]++;
@@ -63,17 +66,18 @@ public class OfAKinderStrategy implements PlayerStrategy{
 						  }
 					  }
 			
-			
-			System.out.println("Dice Values:" + dice[0].getValue() + " " + dice[1].getValue() + " "
-					 + dice[2].getValue() + " "  + dice[3].getValue() + " "  + dice[4].getValue() + " ");
-			System.out.println("End of turn" + turn);
-			
 			for(int counter = 0; counter < dice.length; counter ++){				
 						dice[counter].roll();
+						diceValues[counter] = dice[counter].getValue();
 					}
 					for(int i = 0; i <6; i++){
 						numOfValues[i] = 0;
 					}
+					
+					System.out.println("Dice Values after roll " + turn + " : " + dice[0].getValue() + 
+							" " + dice[1].getValue() + " "
+							 + dice[2].getValue() + " "  + dice[3].getValue() + " "  + dice[4].getValue() + " ");
+					System.out.println("End of roll " + turn);
 				
 		
 		}
@@ -81,35 +85,52 @@ public class OfAKinderStrategy implements PlayerStrategy{
 		if(scorecard.getTaken(8) == false){
 			value = check.checkOfaKind(diceValues, 3);
 			scorecardCategory = 8;
-			System.out.println("Value after 8 = " + value);
 		}
 		
 		if(scorecard.getTaken(11) == false && check.checkOfaKind(diceValues, 4) >= value){
 			value = check.checkOfaKind(diceValues, 4);
 			scorecardCategory = 11;
-			System.out.println("Value after 11 = " + value);
 		}
 		
 		if(scorecard.getTaken(6) == false && check.checkOfaKind(diceValues, 1) >= value){
 			value = check.checkOfaKind(diceValues, 1);
 			scorecardCategory = 6;
-			System.out.println("Value after 6 = " + value);
 		}
 		
 		if(scorecard.getTaken(7) == false && check.checkOfaKind(diceValues, 2) >= value){
 			value = check.checkOfaKind(diceValues, 2);
 			scorecardCategory = 7;
-			System.out.println("Value after 7 = " + value);
 		}
 		
 		
 		if(value == 0 && scorecard.getTaken(12) == false){
 			value = check.getChance(diceValues);
 			scorecardCategory = 12;
-			System.out.println("Value after 12 = " + value);
+		}
+		String category = "";
+		
+		if(scorecardCategory == 6){
+			category = "Three of a Kind";
 		}
 		
-		System.out.println("Choosing " + scorecardCategory + " for " + value + " points.");
+		else if(scorecardCategory == 7){
+			category = "Four of a Kind";
+		}
+		
+		else if(scorecardCategory == 8){
+			category = "Full House";
+		}
+		
+		else if(scorecardCategory == 11){
+			category = "YAHTZEE";
+		}
+		
+		else if(scorecardCategory == 12){
+			category = "Chance";
+		}
+		
+		
+		System.out.println("Choosing " + category + " for " + value + " points.");
 		
 		scorecard.setScore(scorecardCategory, value);
 		

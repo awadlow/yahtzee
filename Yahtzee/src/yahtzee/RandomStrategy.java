@@ -11,7 +11,7 @@ public class RandomStrategy implements PlayerStrategy {
 		int value = 0;
 		int[] diceValues = new int[dice.length];
 		
-		for(int turn = 1; turn < 3; turn ++){
+		for(int turn = 2; turn < 4; turn ++){
 			for(int i = 0; i < dice.length; i++){
 				value = (int)(Math.random()*2) + 1;
 				if(value == 1){
@@ -22,11 +22,12 @@ public class RandomStrategy implements PlayerStrategy {
 				}
 				dice[i].roll();
 				diceValues[i] = dice[i].getValue();
-				//System.out.println("Dice Held = " + dice[i].getHold());
-				//System.out.println("Dice " + i + " value = " + dice[i].getValue());
 				
 			}
-			System.out.println("End of turn " + turn);
+			System.out.println("Dice Values after roll " + turn + " : " + dice[0].getValue() + 
+					" " + dice[1].getValue() + " "
+					 + dice[2].getValue() + " "  + dice[3].getValue() + " "  + dice[4].getValue() + " ");
+			System.out.println("End of roll " + turn);
 		}
 		
 		
@@ -37,119 +38,93 @@ public class RandomStrategy implements PlayerStrategy {
 			case(0):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkUpperSection(diceValues, 1));
-					System.out.println("Ones being used");
+					System.out.println("Ones being used for " + check.checkUpperSection(diceValues, 1));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Ones, already taken");
 				break; 
 			case(1): 
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkUpperSection(diceValues, 2));
-					System.out.println("Twos being used");
+					System.out.println("Twos being used for " + check.checkUpperSection(diceValues, 2));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Twos, already taken");
 				break; 
 			case(2):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkUpperSection(diceValues, 3));
-					System.out.println("Threes being used");
+					System.out.println("Threes being used for " + check.checkUpperSection(diceValues, 3));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Threes, already taken");
 				break; 
 			case(3):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkUpperSection(diceValues, 4));
-					System.out.println("Fours being used");
+					System.out.println("Fours being used for " + check.checkUpperSection(diceValues, 4));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Fours, already taken");
 				break; 
 			case(4):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkUpperSection(diceValues, 5));
-					System.out.println("Fives being used");
+					System.out.println("Fives being used for " + check.checkUpperSection(diceValues, 5));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Fives, already taken");
 				break; 
 			case(5):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkUpperSection(diceValues, 6));
-					System.out.println("Sixes being used");
+					System.out.println("Sixes being used for " + check.checkUpperSection(diceValues, 6));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Sixes, already taken");
 				break; 
 			case(6):
 				if(scorecard.getTaken(value) == false){
-					scorecard.setScore(value, check.checkStraight(diceValues, 1));
-					System.out.println("Small Straight being used");
+					scorecard.setScore(value, check.checkOfaKind(diceValues, 1));
+					System.out.println("Three of a Kind being used for " + check.checkOfaKind(diceValues, 1));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Small Straight, already taken");
 				break; 
 			case(7): 
 				if(scorecard.getTaken(value) == false){
-					scorecard.setScore(value, check.checkStraight(diceValues, 2));
-					System.out.println("Large Straight being used");
+					scorecard.setScore(value, check.checkOfaKind(diceValues, 2));
+					System.out.println("Four of a Kind being used for " + check.checkOfaKind(diceValues, 2));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Large Straight, already taken");
 				break;
 			case(8): 
 				if(scorecard.getTaken(value) == false){
-					scorecard.setScore(value, check.checkOfaKind(diceValues, 1));
-					System.out.println("Three of a Kind being used");
+					scorecard.setScore(value, check.checkOfaKind(diceValues, 3));
+					System.out.println("Three of a Kind being used for " + check.checkOfaKind(diceValues, 1));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Three of a Kind, already taken");
 				break; 
 			case(9): 
 				if(scorecard.getTaken(value) == false){
-					scorecard.setScore(value, check.checkOfaKind(diceValues, 2));
-					System.out.println("Four of a Kind being used");
+					scorecard.setScore(value, check.checkStraight(diceValues, 1));
+					System.out.println("Small Straight being used for " + check.checkStraight(diceValues, 1));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Four of a Kind, already taken");
 				break; 
 			case(10):
 				if(scorecard.getTaken(value) == false){
-					scorecard.setScore(value, check.checkOfaKind(diceValues, 3));
-					System.out.println("Full House being used");
+					scorecard.setScore(value, check.checkStraight(diceValues, 2));
+					System.out.println("Large Straight being used for " + check.checkStraight(diceValues, 2));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Full House, already taken");
 				break; 
 			case(11):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.checkOfaKind(diceValues, 4));
-					System.out.println("Yahtzee being used");
+					System.out.println("Yahtzee being used for " + check.checkOfaKind(diceValues, 4));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Yahtzee, already taken");
 				break; 
 			case(12):
 				if(scorecard.getTaken(value) == false){
 					scorecard.setScore(value, check.getChance(diceValues));
-					System.out.println("Chance being used");
+					System.out.println("Chance being used for " + check.getChance(diceValues));
 					done = true;
 				}
-				else
-					System.out.println("Unable to use Chance, already taken");
 				break; 
 			default:
 				System.out.println("Not possible value");

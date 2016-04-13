@@ -34,6 +34,7 @@ public class Scorecard {
 	//[12] = chance
 	private boolean[] taken = new boolean[13];
 	
+	private final int bonus = 35;
 	
 	public void setScore(int category, int value){
 		scores[category] = value;
@@ -55,7 +56,28 @@ public class Scorecard {
 		{
 			totalScore += scores[cnt];
 		}
+		if(checkBonus() == true){
+			System.out.println("You got the Bonus!!");
+			totalScore += 35;
+		}
 		return totalScore;
 	}
 	
+	public boolean ofAKinderTaken(){
+		if(taken[6] && taken[7] && taken[8] && taken[11])
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean checkBonus(){
+		int sum = 0;
+		for(int cnt = 0; cnt < 6; cnt ++){
+			sum += scores[cnt];
+		}
+		if(sum >= 63)
+			return true;
+		else
+			return false;
+	}
 }
