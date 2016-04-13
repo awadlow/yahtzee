@@ -13,6 +13,7 @@ public class Dice {
 		if(hold == false)
 		{
 			value = (int)(Math.random()*6) + 1;
+
 		}
 		return value;
 	}

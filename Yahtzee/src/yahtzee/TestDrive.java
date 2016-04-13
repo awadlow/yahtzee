@@ -54,20 +54,24 @@ public class TestDrive {
 		{
 			dice[i] = new Dice();
 			dice[i].roll();
-			//System.out.println(dice[i].getValue());
-			diceValues[i] = dice[i].getValue();
-			//System.out.println(diceValues[i]);
-			alreadyUsed[i] = false;
+		
 		}
 		
 		Scorecard scorecard = new Scorecard();
 		
-		PlayerStrategy strategy = new RandomStrategy();
+		PlayerStrategy strategy = new OfAKinderStrategy();
 		
 	
-		for(int cnt = 0; cnt < 13; cnt ++)
+		for(int cnt = 0; cnt < 5; cnt ++){
+			for(int i = 0; i < 5; i++)
+			{
+				dice[i] = new Dice();
+				dice[i].roll();
+				System.out.println(dice[i].getHold());
+				System.out.println(dice[i].getValue());
+			}
 			strategy.operation(dice, scorecard);
-		
+		}
 		System.out.println("Total score: " +scorecard.getTotalScore());
 		//System.out.println(check.checkStraight(diceValues, 2));
 	}
