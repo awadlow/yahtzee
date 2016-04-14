@@ -2,6 +2,8 @@
  * @author AustinWadlow
  */
 
+/*hi*/
+
 package yahtzee;
 
 	public class CombinationChecker {
