@@ -6,6 +6,7 @@
 
 package yahtzee;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import java.awt.GridBagLayout;
@@ -138,6 +139,15 @@ public class PlayPanel extends JPanel {
 		gbc_chckbxHoldDieFive.gridy = 5;
 		add(chckbxHoldDieFive, gbc_chckbxHoldDieFive);
 		
+		String aryOfDieImages[] = new String[6];
+		aryOfDieImages[0] = "die_face_1.png";
+		aryOfDieImages[1] = "die_face_2.png";
+		aryOfDieImages[2] = "die_face_3.png";
+		aryOfDieImages[3] = "die_face_4.png";
+		aryOfDieImages[4] = "die_face_5.png";
+		aryOfDieImages[5] = "die_face_6.png";
+
+		
 		JButton btnRoll = new JButton("ROLL");
 		btnRoll.setEnabled(false);
 		btnRoll.addMouseListener(new MouseAdapter() {
@@ -161,11 +171,11 @@ public class PlayPanel extends JPanel {
 					diceValues[i] = dice[i].getValue();
 				}
 				
-				lblDieRollOne.setText(Integer.toString(diceValues[0]));
-				lblDieRollTwo.setText(Integer.toString(diceValues[1]));
-				lblDieRollThree.setText(Integer.toString(diceValues[2]));
-				lblDieRollFour.setText(Integer.toString(diceValues[3]));
-				lblDieRollFive.setText(Integer.toString(diceValues[4]));
+				lblDieRollOne.setIcon(new ImageIcon(aryOfDieImages[diceValues[0] - 1]));
+				lblDieRollTwo.setIcon(new ImageIcon(aryOfDieImages[diceValues[1] - 1]));
+				lblDieRollThree.setIcon(new ImageIcon(aryOfDieImages[diceValues[2] - 1]));
+				lblDieRollFour.setIcon(new ImageIcon(aryOfDieImages[diceValues[3] - 1]));
+				lblDieRollFive.setIcon(new ImageIcon(aryOfDieImages[diceValues[4] - 1]));
 				
 			}
 		});
