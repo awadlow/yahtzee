@@ -5,7 +5,6 @@
 package yahtzee;
 
 public class TestDrive {
-	
 
 	
 	public static void main(String args[]){
@@ -16,10 +15,16 @@ public class TestDrive {
 		Scorecard scorecard = new Scorecard();
 		int[] numOfValues = new int[dice.length + 1];
 		PlayerStrategy strategy;
+		int straightChecker = 0;
+	
 		
 		for(int turn = 0; turn < 13; turn ++)
 		{
 		
+			for(int jnc = 0; jnc < numOfValues.length; jnc++){
+				numOfValues[jnc] = 0;
+			}
+			
 			System.out.println("This is turn number: " + (turn + 1));
 			
 			for(int i = 0; i < 5; i++)
@@ -50,18 +55,43 @@ public class TestDrive {
 					   else if(diceValues[inc] == 6)
 						   numOfValues[5]++;
 				}
+				
+				if(numOfValues[2] >= 1 && numOfValues[3] >= 1 && !scorecard.straightTaken()){
 					for(int i = 0; i < numOfValues.length; i++){
-						if(numOfValues[i] >= 2 && !scorecard.ofAKinderTaken()){
+						if(numOfValues[i] == 1){
+							straightChecker ++;
+						}
+					}
+					if(straightChecker >= 3){
+						strategy = new StraightStrategy();
+						message = "Straight Strategy being used.";
+					}
+						
+				}
+				
+				else{
+					for(int i = 0; i < numOfValues.length; i++){
+						if(numOfValues[i] >= 3 && !scorecard.ofAKinderTaken()){
 							strategy = new OfAKinderStrategy();
 							message = "Of A Kinder Strategy being used.";
 						}
 					}
+				}
+				
+				if(strategy instanceof RandomStrategy)
+					for(int i = 0; i < numOfValues.length; i++){
+						if(numOfValues[i] >= 2 && !scorecard.upperSectionTaken()){
+							strategy = new UpperSectionerStrategy();
+							message = "Upper Sectioner Strategy being used.";
+						}
+					}
+			
 					System.out.println(message);
 					scorecard = strategy.operation(dice, scorecard);
 					
 					System.out.println("End of turn: " + (turn + 1));
 				
-		}
+		
 		
 		
 		System.out.println("Total score: " +scorecard.getTotalScore());
@@ -69,5 +99,5 @@ public class TestDrive {
 	}
 	
 	
-	
+	}	
 }

@@ -40,8 +40,10 @@ public class Scorecard {
 	private final int bonus = 35;
 	
 	public void setScore(int category, int value){
-		scores[category] = value;
-		taken[category] = true;
+		if(taken[category] == false){
+			scores[category] = value;
+			taken[category] = true;
+		}
 	}
 	
 	public boolean getTaken(int category){
@@ -73,6 +75,21 @@ public class Scorecard {
 			return false;
 	}
 	
+	public boolean straightTaken(){
+		if(taken[9] && taken[10])
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean upperSectionTaken(){
+		if(taken[0] && taken[1] && taken[2] && taken[3] && taken[4] && taken[5])
+			return true;
+		else
+			return false;
+		
+	}
+	
 	public boolean checkBonus(){
 		int sum = 0;
 		for(int cnt = 0; cnt < 6; cnt ++){
@@ -83,4 +100,6 @@ public class Scorecard {
 		else
 			return false;
 	}
+	
+	
 }

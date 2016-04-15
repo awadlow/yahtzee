@@ -105,7 +105,6 @@ package yahtzee;
 	  public int checkStraight(int[] diceValues, int type){
 		   
 		   int[] numOfValues = new int[6];
-		   int sum = 0;
 		   
 		   for(int cnt = 0; cnt < 5; cnt ++)
 		   {
