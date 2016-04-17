@@ -1,3 +1,7 @@
+/**
+ * @author Austin Wadlow
+ */
+
 package yahtzee;
 
 public interface PlayerStrategy {

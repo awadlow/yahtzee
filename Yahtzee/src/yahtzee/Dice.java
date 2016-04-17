@@ -1,5 +1,5 @@
 /**
- * @author AustinWadlow
+ * @author Austin Wadlow
  */
 
 package yahtzee;

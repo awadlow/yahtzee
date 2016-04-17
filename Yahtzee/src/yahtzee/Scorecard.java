@@ -1,5 +1,5 @@
 /**
- * @author AustinWadlow
+ * @author Austin Wadlow
  */
 package yahtzee;
 
@@ -62,7 +62,6 @@ public class Scorecard {
 			totalScore += scores[cnt];
 		}
 		if(checkBonus() == true){
-			System.out.println("You got the Bonus!!");
 			totalScore += 35;
 		}
 		return totalScore;
