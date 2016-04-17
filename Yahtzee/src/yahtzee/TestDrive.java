@@ -85,7 +85,12 @@ public class TestDrive {
 							message = "Upper Sectioner Strategy being used.";
 						}
 					}
-			
+				if(strategy instanceof RandomStrategy)
+					if(!scorecard.getTaken(12)){
+						strategy = new FourAndUpStrategy();
+						message = "FourAndUpStrategy being used.";
+					}
+				
 					System.out.println(message);
 					scorecard = strategy.operation(dice, scorecard);
 					
