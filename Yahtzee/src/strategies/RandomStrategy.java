@@ -1,7 +1,11 @@
 /**
  * @author Austin Wadlow
  */
-package yahtzee;
+package strategies;
+
+import yahtzee.CombinationChecker;
+import yahtzee.Dice;
+import yahtzee.Scorecard;
 
 public class RandomStrategy implements PlayerStrategy {
 	

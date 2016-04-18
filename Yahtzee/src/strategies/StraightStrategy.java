@@ -3,7 +3,11 @@
  */
 
 
-package yahtzee;
+package strategies;
+
+import yahtzee.CombinationChecker;
+import yahtzee.Dice;
+import yahtzee.Scorecard;
 
 public final class StraightStrategy implements PlayerStrategy {
 

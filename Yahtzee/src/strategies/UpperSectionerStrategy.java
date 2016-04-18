@@ -2,14 +2,19 @@
  * @author Austin Wadlow
  */
 
-package yahtzee;
 
-public final class OfAKinderStrategy implements PlayerStrategy{
+package strategies;
+
+import yahtzee.CombinationChecker;
+import yahtzee.Dice;
+import yahtzee.Scorecard;
+
+public class UpperSectionerStrategy implements PlayerStrategy{
 	private final CombinationChecker check = CombinationChecker.getInstance();
-
+	
 	@Override
 	public Scorecard operation(Dice[] dice, Scorecard scorecard) {
-			
+		
 		int scorecardCategory = 0, value = 0;
 		int[] diceValues = new int[dice.length];
 		int[] numOfValues = new int[dice.length + 1];
@@ -36,43 +41,45 @@ public final class OfAKinderStrategy implements PlayerStrategy{
 					   numOfValues[5]++;
 			}
 			for(int inc = 0; inc < dice.length; inc++){
-				if(numOfValues[0] >= 2)
+				if(numOfValues[0] >= 2 && !scorecard.getTaken(0))
 					if(dice[inc].getValue() == 1){
 							  dice[inc].setHold(true);
 						  }
-				if(numOfValues[1] >= 2)
+				if(numOfValues[1] >= 2 && !scorecard.getTaken(1))
 					if(dice[inc].getValue() == 2){
 							  dice[inc].setHold(true);
 						  }
 					   
-				if(numOfValues[2] >= 2)
+				if(numOfValues[2] >= 2 && !scorecard.getTaken(2))
 					if(dice[inc].getValue() == 3){
 							  dice[inc].setHold(true);
 						  }
 					   
-				if(numOfValues[3] >= 2)
+				if(numOfValues[3] >= 2 && !scorecard.getTaken(3))
 					if(dice[inc].getValue() == 4){
 							  dice[inc].setHold(true);
 						  }
 					   
-				if(numOfValues[4] >= 2)
+				if(numOfValues[4] >= 2 && !scorecard.getTaken(4))
 					if(dice[inc].getValue() == 5){
 							  dice[inc].setHold(true);
 						  }
 					   
-				 if(numOfValues[5] >= 2)
+				 if(numOfValues[5] >= 2 && !scorecard.getTaken(5))
 					 if(dice[inc].getValue() == 6){
 							  dice[inc].setHold(true);
 						  }
 					  }
 			
-			for(int counter = 0; counter < dice.length; counter ++){				
+					for(int counter = 0; counter < dice.length; counter ++){				
 						dice[counter].roll();
 						diceValues[counter] = dice[counter].getValue();
 					}
 					for(int i = 0; i <6; i++){
 						numOfValues[i] = 0;
 					}
+					
+					
 					
 					System.out.println("Dice Values after roll " + turn + " : " + dice[0].getValue() + 
 							" " + dice[1].getValue() + " "
@@ -82,58 +89,26 @@ public final class OfAKinderStrategy implements PlayerStrategy{
 		
 		}
 		
-		if(scorecard.getTaken(8) == false){
-			value = check.checkOfaKind(diceValues, 3);
-			scorecardCategory = 8;
+		if(!scorecard.getTaken(11) && check.checkOfaKind(diceValues, 4) != 0){
+			
+			scorecard.setScore(11, check.checkOfaKind(diceValues, 4));
 		}
 		
-		if(scorecard.getTaken(11) == false && check.checkOfaKind(diceValues, 4) >= value){
-			value = check.checkOfaKind(diceValues, 4);
-			scorecardCategory = 11;
+		else{
+			for( int jnc = 0; jnc < 6; jnc ++){
+				if(!scorecard.getTaken(jnc))
+					if(check.checkUpperSection(diceValues, jnc + 1) > value){
+						value = check.checkUpperSection(diceValues, jnc + 1);
+						scorecardCategory = jnc;
+					}
+			}
+			
+			System.out.println("Choosing " + (scorecardCategory + 1) + "'s for " + value + " points");
+			scorecard.setScore(scorecardCategory, value);
 		}
-		
-		if(scorecard.getTaken(6) == false && check.checkOfaKind(diceValues, 1) >= value){
-			value = check.checkOfaKind(diceValues, 1);
-			scorecardCategory = 6;
-		}
-		
-		if(scorecard.getTaken(7) == false && check.checkOfaKind(diceValues, 2) >= value){
-			value = check.checkOfaKind(diceValues, 2);
-			scorecardCategory = 7;
-		}
-		
-		
-		if(value == 0 && scorecard.getTaken(12) == false){
-			value = check.getChance(diceValues);
-			scorecardCategory = 12;
-		}
-		String category = "";
-		
-		if(scorecardCategory == 6){
-			category = "Three of a Kind";
-		}
-		
-		else if(scorecardCategory == 7){
-			category = "Four of a Kind";
-		}
-		
-		else if(scorecardCategory == 8){
-			category = "Full House";
-		}
-		
-		else if(scorecardCategory == 11){
-			category = "YAHTZEE";
-		}
-		
-		else if(scorecardCategory == 12){
-			category = "Chance";
-		}
-		
-		
-		System.out.println("Choosing " + category + " for " + value + " points.");
-		
-		scorecard.setScore(scorecardCategory, value);
 		
 		return scorecard;
 	}
+		
+
 }

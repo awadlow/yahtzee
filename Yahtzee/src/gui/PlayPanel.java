@@ -4,7 +4,7 @@
  */
 
 
-package yahtzee;
+package gui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -22,6 +22,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JCheckBox;
+
+import yahtzee.CombinationChecker;
+import yahtzee.Dice;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

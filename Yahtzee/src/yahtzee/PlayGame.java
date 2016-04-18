@@ -4,6 +4,13 @@
 
 package yahtzee;
 
+import strategies.FourAndUpStrategy;
+import strategies.OfAKinderStrategy;
+import strategies.PlayerStrategy;
+import strategies.RandomStrategy;
+import strategies.StraightStrategy;
+import strategies.UpperSectionerStrategy;
+
 public class PlayGame {
 	
 	SavedScoreCards savedScores = new SavedScoreCards();
@@ -34,7 +41,7 @@ public class PlayGame {
 				dice[i].roll();
 				
 			}
-			System.out.println("Dice Values after roll 1: "  + dice[0].getValue() + " " + dice[1].getValue() + " "
+			System.out.println("Dice Values after roll 1 : "  + dice[0].getValue() + " " + dice[1].getValue() + " "
 					 + dice[2].getValue() + " "  + dice[3].getValue() + " "  + dice[4].getValue());
 				
 				strategy = new RandomStrategy();

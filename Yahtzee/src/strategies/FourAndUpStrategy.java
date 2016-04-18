@@ -2,7 +2,11 @@
  * @author Austin Wadlow
  */
 
-package yahtzee;
+package strategies;
+
+import yahtzee.CombinationChecker;
+import yahtzee.Dice;
+import yahtzee.Scorecard;
 
 public class FourAndUpStrategy implements PlayerStrategy{
 	

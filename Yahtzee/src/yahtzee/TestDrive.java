@@ -11,7 +11,7 @@ public class TestDrive {
 		
 		PlayGame game = new PlayGame();
 		
-		for(int i = 0; i < 10; i ++){
+		for(int i = 0; i < 1; i ++){
 			game.play();
 			System.out.println("Game score " + game.getGameScore(i));
 			System.out.println("Cumulative score: " + game.getCumulativeScore());

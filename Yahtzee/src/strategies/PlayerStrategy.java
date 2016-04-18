@@ -2,7 +2,10 @@
  * @author Austin Wadlow
  */
 
-package yahtzee;
+package strategies;
+
+import yahtzee.Dice;
+import yahtzee.Scorecard;
 
 public interface PlayerStrategy {
 
