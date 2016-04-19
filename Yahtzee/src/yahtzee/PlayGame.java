@@ -143,7 +143,7 @@ public class PlayGame {
 			else if(numInput == 2){
 				System.out.println("Which game score did you want to view?");
 				numInput = keyboard.nextInt();
-				if((numInput) > totalGames || (numInput) <=1)
+				if((numInput) > totalGames || (numInput) < 1)
 					System.out.println("Invalid game.");
 				else
 					System.out.println("Game number " + numInput + " score: " + getGameScore(numInput - 1));
