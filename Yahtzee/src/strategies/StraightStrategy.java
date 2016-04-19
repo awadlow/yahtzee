@@ -20,6 +20,7 @@ public final class StraightStrategy implements PlayerStrategy {
 		 int[] diceValues = new int[dice.length];
 		 boolean[] takenValues = new boolean[6];
 		 int value = 0;
+		 String message = "";
 		
 		for(int turn = 2; turn < 4; turn++){
 			
@@ -72,16 +73,18 @@ public final class StraightStrategy implements PlayerStrategy {
 		
 		if(scorecard.getTaken(10) == false){
 			value = 10;
+			message = "Large Straight ";
 		}
 		
 		if(value == 0 || (check.checkStraight(diceValues, 2) <= check.checkStraight(diceValues, 1) 
 				&& scorecard.getTaken(9) == false)){
 			value = 9;
+			message = "Small Straight ";
 		}
 		
 		
 		scorecard.setScore(value, check.checkStraight(diceValues, (value-8)));
-		System.out.println("Straight of type " + (value - 8) + " being used for " + check.checkStraight(diceValues, (value-8)));
+		System.out.println("Choosing " + message + "for " + check.checkStraight(diceValues, (value-8)));
 		
 		return scorecard;
 	}

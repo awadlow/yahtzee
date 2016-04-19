@@ -101,6 +101,12 @@ public class UpperSectionerStrategy implements PlayerStrategy{
 						value = check.checkUpperSection(diceValues, jnc + 1);
 						scorecardCategory = jnc;
 					}
+				if(value == 0){
+					for(int cnt = 0; cnt < 6; cnt ++){
+						if(!scorecard.getTaken(cnt))
+							scorecardCategory = cnt;
+					}
+				}
 			}
 			
 			System.out.println("Choosing " + (scorecardCategory + 1) + "'s for " + value + " points");
